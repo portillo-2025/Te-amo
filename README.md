@@ -1,4 +1,3 @@
-# Te-amo
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,39 +7,62 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #ffb6c1, #ffe4e1);
+      background-color: #ffe4e1;
+      overflow: hidden;
       font-family: 'Arial', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
     }
 
-    h1 {
-      font-size: 4em;
+    .te-amo {
+      position: absolute;
+      font-size: 2em;
       color: #d6336c;
-      text-shadow: 2px 2px 5px #fff;
-      animation: latido 1.5s infinite;
+      font-weight: bold;
+      opacity: 0.8;
+      animation: flotar 10s linear infinite;
     }
 
-    @keyframes latido {
-      0%, 100% {
-        transform: scale(1);
+    @keyframes flotar {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
       }
-      50% {
-        transform: scale(1.1);
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
       }
+    }
+
+    iframe {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      width: 300px;
+      height: 80px;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <h1>Te amo</h1>
+
+  <!-- Generar muchos "Te amo" -->
+  <script>
+    const cantidad = 100;
+    for (let i = 0; i < cantidad; i++) {
+      const div = document.createElement("div");
+      div.className = "te-amo";
+      div.textContent = "❤️ Te amo ❤️";
+      div.style.left = Math.random() * 100 + "vw";
+      div.style.animationDuration = (5 + Math.random() * 5) + "s";
+      div.style.fontSize = (1 + Math.random() * 2) + "em";
+      document.body.appendChild(div);
+    }
+  </script>
 
   <!-- Reproductor de SoundCloud -->
-  <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/t3relemento/t3r-elemento-labios-de-1&color=%23ffb6c1&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+  <iframe 
+    scrolling="no" 
+    allow="autoplay" 
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/t3relemento/t3r-elemento-labios-de-1&color=%23ffb6c1&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
   </iframe>
 </body>
 </html>
